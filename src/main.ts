@@ -11,6 +11,9 @@ interface Post {
   file: string
   tags: string[]
   created: string
+  updated?: string
+  pinned?: boolean
+  showSidebar?: boolean
 }
 
 const run = async () => {

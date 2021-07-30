@@ -1,7 +1,9 @@
 ---
 created: 25/05/21
 title: Queueing requests with react
-tags: ["a", "b"]
+tags: ["general", "react"]
+showSidebar: true
+updated: 01/05/23
 ---
 Marked - Markdown Parser
 ========================

@@ -1,7 +1,7 @@
 ---
 created: 25/05/21
 title: Home
-tags: ["a", "b"]
+tags: ["general"]
 ---
 # All
 

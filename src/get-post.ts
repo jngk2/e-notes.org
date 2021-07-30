@@ -12,7 +12,10 @@ const getPost = (item: Item) => {
     title: fm.title,
     file: item.name === 'index.md' ? '/' : item.name.replace('.md', ''),
     tags: fm.tags,
-    created: fm.created
+    created: fm.created,
+    updated: fm.updated || '',
+    pinned: Boolean(fm.pinned),
+    showSidebar: Boolean(fm.showSidebar)
   }
 }
 

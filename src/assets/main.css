@@ -16,39 +16,43 @@ body {
 .container {
     max-width: 50%;
     margin: 2% auto;
-    display: flex;
-    justify-content: center;
 }
 
-.main-content {
-    border-right: 1.5px solid grey;
+.content {
+    display: flex;
+    column-gap: 5%;
+}
+
+.column-main {
     flex-grow: 1;
 }
 
-.tags {
-    max-width: 20%;
+.sidebar {
+    border-left: 1.5px solid grey;
     display: flex;
+    flex-direction: column;
 }
 
-.tags-list {
+.sidebar > ul {
     list-style: none;
     display: flex;
-    flex-wrap: wrap;
-    column-gap: 4.5px;
     padding-left: 20px;
     align-self: flex-start;
+}
+
+.tags {
+    flex-wrap: wrap;
+    column-gap: 4.5px;
+
     row-gap: 12px;
 }
 
-.tags-list > li > a {
+.tags > li > a {
     background-color: darkblue;
     padding: 3px 6px 4px 6px;
     cursor: pointer;
     color: #fff;
     border-radius: 3px;
-}
-
-.tags-list li {
 }
 
 .copy-to-clip {

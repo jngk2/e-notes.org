@@ -11,6 +11,20 @@ interface Item {
   fullname: string
 }
 
+interface Tags {
+  [key: string]: number
+}
+
+const incrementTags = (counts: Tags, tags: string[]) => {
+  for (const tag of tags) {
+    if (tag in counts) {
+      counts[tag]++;
+    } else {
+      counts[tag] = 1;
+    }
+  }
+}
+
 const build = async (dir: string, outDir: string) => {
   console.time('build-index')
 
@@ -18,21 +32,34 @@ const build = async (dir: string, outDir: string) => {
     await fs.mkdirSync(outDir, { recursive: true })
   }
 
+  const tags: Tags = {}
   const posts: Post[] = []
+  const pinned: string[] = []
 
   const list = (await rra.list(dir) as Item[])
 
   for (const item of list) {
     if (isMarkdown(item)) {
       const post = getPost(item)
+
       if (post) {
+        if (post.pinned) {
+          pinned.push(post.title)
+        }
+
+        if (post.tags) {
+          incrementTags(tags, post.tags)
+        }
+
         posts.push(post)
       }
     }
   }
 
   fs.writeFileSync(path.join(outDir, 'index.json'), JSON.stringify({
-    posts
+    posts,
+    tags,
+    pinned
   }))
 
   console.timeEnd('build-index')
