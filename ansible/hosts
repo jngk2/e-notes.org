@@ -1,2 +1,0 @@
-[all]
-e-notes.org ansible_ssh_host=194.195.245.183 ansible_ssh_private_key_file=~/.ssh/id_rsa.home ansible_python_interpreter=/usr/bin/python

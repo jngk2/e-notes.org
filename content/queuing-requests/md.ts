@@ -1,3 +1,7 @@
+/**
+ * A javascript multiline-comment
+ * with multiple lines
+ */
 const get = async(id: number) => {
   const ms = Math.floor((Math.random() * 4000 + 1000) / 1000) * 1000
   console.log(`request ${id} will resolve in ${ms} milliseconds`)

@@ -1,0 +1,98 @@
+h1 {
+    display: inline-block;
+    margin: 0;
+    background-color: darkblue;
+    letter-spacing: 1px;
+    padding: 8px;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+body {
+    font-family: system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+}
+
+.container {
+    max-width: 50%;
+    margin: 2% auto;
+    display: flex;
+    justify-content: center;
+}
+
+.main-content {
+    border-right: 1.5px solid grey;
+    flex-grow: 1;
+}
+
+.tags {
+    max-width: 20%;
+    display: flex;
+}
+
+.tags-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 4.5px;
+    padding-left: 20px;
+    align-self: flex-start;
+    row-gap: 12px;
+}
+
+.tags-list > li > a {
+    background-color: darkblue;
+    padding: 3px 6px 4px 6px;
+    cursor: pointer;
+    color: #fff;
+    border-radius: 3px;
+}
+
+.tags-list li {
+}
+
+.copy-to-clip {
+    display: inline-block;
+    float: right;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    background-image: url('clip.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.raw-code {
+    display: none;
+}
+
+.index {
+    list-style: none;
+    padding: 0;
+    padding-right: 5%;
+}
+
+.index li {
+    display: flex;
+    line-height: 1.5rem;
+    justify-content: space-between;
+}
+
+.index li > a {
+    display: flex;
+}
+
+.index li > span {
+    display: flex;
+}
+
+.index a {
+    text-decoration: none;
+    color: #0c51d9;
+    min-width: 20%;
+}
+
+.created {
+    font-size: 13px;
+    color: grey;
+}
