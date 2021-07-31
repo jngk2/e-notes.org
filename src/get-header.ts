@@ -1,7 +1,10 @@
 const getHeader = () => {
   return `
 <div class="header">
-    <h1>e-notes</h1>
+       <div class="heading">
+            <h1>e-notes</h1>
+        </div>
+    <div class="splotch"></div>
 </div>
 `
 }

@@ -1,9 +1,14 @@
+.heading {
+    box-shadow: -2px -1px black;
+    display: flex;
+}
+
 h1 {
-    display: inline-block;
+    display: flex;
     margin: 0;
+    align-self: center;
     letter-spacing: 1px;
     padding: 8px;
-    box-shadow: -2px -1px black;
     cursor: pointer;
 }
 
@@ -125,4 +130,19 @@ body {
 
 .post-name {
     padding-left: 20px;
+}
+
+.splotch {
+    background-image: url(./splotch.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 12%;
+    display: flex;
+    margin-left: auto;
+}
+
+.header {
+    height: 80px;
+    display: flex;
 }
