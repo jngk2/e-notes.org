@@ -2,6 +2,7 @@ import fs, { readFileSync } from "fs";
 import hljs from 'highlight.js'
 import marked from "marked";
 import { getIndex } from "./get-index";
+import { getHeader } from "./get-header";
 import { getCodeBlock } from "./get-code";
 import { Item } from "./build-index";
 import { stripFrontmatter } from "./get-frontmatter";
@@ -10,10 +11,12 @@ import path from "path";
 const getHtml = async (file: Item) => {
   let markdown = fs.readFileSync(file.fullname).toString()
   const index = getIndex()
+  const header = getHeader()
   const codeDir = path.dirname(file.fullname)
 
   markdown = markdown
     .replace('__INDEX__', index)
+    .replace('__HEADER__', header)
     .replace(/__CODE__\=(?<filename>[^\s]+)/g, (_, filename) => {
       if (!filename) {
         return ''

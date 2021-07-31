@@ -36,7 +36,7 @@ const build = async (inDir: string, outDir: string) => {
 
   const footerHtml = `
     <div class="footer">
-        <a href="#">github.com/jngk2/</a> | <a href="#">Mail</a>
+        <a href="https://github.com/jngk2/e-notes.org">source</a> | <a href="mailto:jngk@posteo.net">e-mail</a>
     </div>
   `
 

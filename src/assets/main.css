@@ -1,12 +1,10 @@
 h1 {
     display: inline-block;
     margin: 0;
-    background-color: darkblue;
     letter-spacing: 1px;
     padding: 8px;
-    color: #fff;
+    box-shadow: -2px -1px black;
     cursor: pointer;
-    border-radius: 5px;
 }
 
 body {
@@ -21,6 +19,24 @@ body {
 .content {
     display: flex;
     column-gap: 5%;
+}
+
+.footer {
+    box-shadow: 1px 1px black;
+    display: flex;
+    justify-content: center;
+    padding: 13px;
+    font-weight: bold;
+    column-gap: 2%;
+}
+
+.footer > a:last-child {
+    justify-self: flex-end;
+}
+
+.footer > a {
+    text-decoration: none;
+    padding: 2px 3px;
 }
 
 .column-main {
@@ -71,12 +87,13 @@ body {
 }
 
 .index {
+    background-color: aliceblue;
     list-style: none;
-    padding: 0;
-    padding-right: 5%;
+    padding: 2%;
 }
 
 .index li {
+    border-bottom: 1px solid lightgrey;
     display: flex;
     line-height: 1.5rem;
     justify-content: space-between;
@@ -92,11 +109,20 @@ body {
 
 .index a {
     text-decoration: none;
-    color: #0c51d9;
+    color: #000;
     min-width: 20%;
+}
+
+.pinned:before {
+    content: url("./pin.png");
+    position: absolute;
 }
 
 .created {
     font-size: 13px;
-    color: grey;
+    color: black;
+}
+
+.post-name {
+    padding-left: 20px;
 }

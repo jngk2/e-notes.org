@@ -2,7 +2,7 @@
 created: 25/05/21
 title: Home
 tags: ["general"]
+pinned: true
 ---
-# All
-
+__HEADER__
 __INDEX__
