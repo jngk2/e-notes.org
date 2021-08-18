@@ -3,10 +3,14 @@ import fs from "fs";
 import { isMarkdown } from "./util";
 import { getHtml } from "./get-html";
 import { getPost } from "./get-post";
-import { toList } from "./to-list";
 import { Item } from "./build-index";
 
 const rra = require('recursive-readdir-async')
+
+export interface Meta {
+  created: string
+  updated: string
+}
 
 const templateFile = path.resolve(__dirname, 'templates', 'default.html')
 
@@ -21,28 +25,18 @@ const build = async (inDir: string, outDir: string) => {
 
   const index = fs.readFileSync(path.resolve('build/index.json')).toString()
 
-  const { tags: unsortedTags, pinned } = JSON.parse(index)
+  const { tags: unsortedTags } = JSON.parse(index)
 
   const tags = Object.keys(unsortedTags)
     .sort((a, b) => {
       return unsortedTags[b] - unsortedTags[a]
     })
 
-  const sidebarHtml = `
-  <div class="sidebar">
-    ${toList(pinned, 'pinned')}
-    ${toList(tags, 'tags')}
-  </div>`;
+  console.log(tags)
 
-  const footerHtml = `
-    <div class="footer">
-        <a href="https://github.com/jngk2/e-notes.org">source</a> | <a href="mailto:jngk@posteo.net">e-mail</a>
-    </div>
-  `
-
-  const getContent = async (file: Item) => `
+  const getContent = async (file: Item, meta: Meta) => `
     <div class="column-main" >
-    ${await getHtml(file)}
+    ${await getHtml(file, meta)}
     </div>
     `
 
@@ -50,10 +44,8 @@ const build = async (inDir: string, outDir: string) => {
     if (isMarkdown(file)) {
       const post = getPost(file)
       const html = fs.readFileSync(templateFile).toString()
-        .replace('__CONTENT__', await getContent(file))
-        .replace('__SIDEBAR__', (post && post.showSidebar) ? sidebarHtml : '')
+        .replace('__CONTENT__', await getContent(file, post as Meta))
         .replace('__TITLE__', post && post.title || '')
-        .replace('__FOOTER__', footerHtml);
 
       const outfile = path.join(outDir, file.name)
         .replace(/\.md$/, '.html')

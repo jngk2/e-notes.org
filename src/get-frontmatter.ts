@@ -1,7 +1,7 @@
 import { Post } from "./main";
 
 const VALID_ITEMS = [
-  'created', 'title', 'tags', 'updated', 'pinned', 'showSidebar'
+  'created', 'title', 'tags', 'updated', 'pinned'
 ]
 
 const getFrontmatter = (contents: string): Post | null => {

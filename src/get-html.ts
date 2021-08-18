@@ -7,8 +7,19 @@ import { getCodeBlock } from "./get-code";
 import { Item } from "./build-index";
 import { stripFrontmatter } from "./get-frontmatter";
 import path from "path";
+import { Meta } from "./build-posts";
 
-const getHtml = async (file: Item) => {
+const getMeta = (meta: Meta) => {
+  if (meta && (meta.created || meta.updated)) {
+    return `<div class="meta">
+  Published:<span class="published">${meta.created}</span>
+  Updated:<span class="updated">${meta.updated}</span>
+    </div>`
+  }
+  return ''
+}
+
+const getHtml = async (file: Item, meta: Meta) => {
   let markdown = fs.readFileSync(file.fullname).toString()
   const index = getIndex()
   const header = getHeader()
@@ -28,6 +39,7 @@ const getHtml = async (file: Item) => {
 
       return `${codeblock}\n<div class="raw-code">${code}</div>`;
     })
+    .trim()
 
   marked.setOptions({
     highlight: (code, lang) => {
@@ -35,7 +47,13 @@ const getHtml = async (file: Item) => {
     }
   })
 
-  return marked(stripFrontmatter(markdown))
+
+  return `<div class="content-main">
+    ${file.name !== 'index.md' && getMeta(meta) || ''}
+  ${marked(stripFrontmatter(markdown))}
+  </div>
+  <div class="footer"> <a href="https://github.com/jngk2/e-notes.org">source</a> | <a href="mailto:jngk@posteo.net">e-mail</a></div>
+`
 }
 
 export { getHtml }

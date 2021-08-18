@@ -25,6 +25,11 @@ const incrementTags = (counts: Tags, tags: string[]) => {
   }
 }
 
+export interface TitleFile {
+  title: string
+  file: string
+}
+
 const build = async (dir: string, outDir: string) => {
   console.time('build-index')
 
@@ -34,7 +39,7 @@ const build = async (dir: string, outDir: string) => {
 
   const tags: Tags = {}
   const posts: Post[] = []
-  const pinned: string[] = []
+  const pinned: TitleFile[] = []
 
   const list = (await rra.list(dir) as Item[])
 
@@ -44,7 +49,10 @@ const build = async (dir: string, outDir: string) => {
 
       if (post) {
         if (post.pinned) {
-          pinned.push(post.title)
+          pinned.push({
+            title: post.title,
+            file: item.name.split('.')[0] || ''
+          })
         }
 
         if (post.tags) {

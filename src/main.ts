@@ -13,7 +13,6 @@ interface Post {
   created: string
   updated?: string
   pinned?: boolean
-  showSidebar?: boolean
 }
 
 const run = async () => {

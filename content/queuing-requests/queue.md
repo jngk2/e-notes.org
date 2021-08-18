@@ -2,7 +2,7 @@
 created: 25/05/21
 title: Queueing requests with react
 tags: ["general", "react"]
-showSidebar: true
+pinned: true
 updated: 01/05/23
 ---
 Marked - Markdown Parser

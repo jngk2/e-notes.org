@@ -15,7 +15,6 @@ const getPost = (item: Item) => {
     created: fm.created,
     updated: fm.updated || '',
     pinned: Boolean(fm.pinned),
-    showSidebar: Boolean(fm.showSidebar)
   }
 }
 
